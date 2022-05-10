@@ -1,0 +1,9 @@
+[all:vars]
+ansible_user=dmay
+ansible_port=22
+ansible_become=yes
+ansible_become_method=sudo
+
+[linux]
+dmstr ansible_host=10.0.0.249
+dmay  ansible_host=10.0.0.83
