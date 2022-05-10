@@ -1,0 +1,20 @@
+---
+
+- hosts: dmstr
+  become: true
+  remote_user: dmay
+
+  tasks:
+  - name: Update/upgrade dmstr
+    apt:
+      update_cache: yes
+      upgrade: yes
+
+  - name: Reboot system if kernel/libs updated
+    shell: sleep 10 && /sbin/shutdown -r now 'Rebooting box to update system libs/kernel as needed'
+    args:
+      removes: /var/run/reboot-required
+    async: 300
+    poll: 0
+    ignore_errors: true
+...

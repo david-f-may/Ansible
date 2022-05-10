@@ -1,0 +1,26 @@
+---
+
+- hosts: all
+  become: true
+  remote_user: dmay
+  tasks:
+
+  - name: update repository index
+    apt:
+      update_cache: yes
+
+  - name: install vim-gtk3
+    apt:
+      name: vim-gtk3
+      state: latest
+# to remove, change to this
+#      state: absent
+
+  - name: install build-essential
+    apt:
+      name: build-essential
+      state: latest
+# to remove, change to this
+#      state: absent
+
+...
